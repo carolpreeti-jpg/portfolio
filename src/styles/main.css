@@ -1,0 +1,430 @@
+/* ──────────────────────────────────────────────────────────────────────────────
+   DESIGN SYSTEM LAYER — Porta Minimalista 
+──────────────────────────────────────────────────────────────────────────────── */
+
+/* 1. CSS Reset */
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: rgb(18, 18, 18);
+	color: #e6e6e6;
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.6;
+	overflow-x: hidden;
+}
+
+/* 2. Typography Scale */
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	font-family: 'Inter Display', 'Inter', sans-serif;
+	font-weight: 500;
+	line-height: 1.2;
+}
+
+h1 {
+	font-size: clamp(32px, 8vw, 72px);
+	letter-spacing: -0.02em;
+}
+
+h2 {
+	font-size: clamp(24px, 5vw, 48px);
+	letter-spacing: -0.015em;
+}
+
+h3 {
+	font-size: 18px;
+	letter-spacing: -0.01em;
+}
+
+p {
+	margin: 0;
+	font-size: 14px;
+	line-height: 1.8;
+	color: rgba(230, 230, 230, 0.7);
+}
+
+a {
+	color: #e6e6e6;
+	text-decoration: none;
+	transition: color 0.18s ease;
+}
+
+a:hover {
+	color: #0099ff;
+}
+
+/* 3. Utilities */
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+.grid {
+	display: grid;
+	gap: 24px;
+}
+
+.grid-2 {
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.divider {
+	height: 1px;
+	background: rgba(230, 230, 230, 0.07);
+	margin: 32px 0;
+}
+
+.spacer-xs { height: 8px; }
+.spacer-sm { height: 16px; }
+.spacer-md { height: 32px; }
+.spacer-lg { height: 56px; }
+.spacer-xl { height: 80px; }
+
+/* 4. Navigation */
+nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	height: 44px;
+	background: rgba(5, 5, 5, 0.92);
+	backdrop-filter: saturate(180%) blur(20px);
+	-webkit-backdrop-filter: saturate(180%) blur(20px);
+	border-bottom: 1px solid rgba(230, 230, 230, 0.08);
+	display: flex;
+	align-items: center;
+}
+
+.nav-container {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.nav-logo {
+	font-family: 'Inter Display', sans-serif;
+	font-size: 13px;
+	font-weight: 500;
+	color: #e6e6e6;
+	text-decoration: none;
+	white-space: nowrap;
+	transition: opacity 0.18s ease;
+}
+
+.nav-logo:hover {
+	opacity: 0.7;
+}
+
+.nav-links {
+	display: flex;
+	gap: 24px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.nav-link {
+	font-family: 'Inter', sans-serif;
+	font-size: 10px;
+	font-weight: 500;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: rgba(230, 230, 230, 0.35);
+	text-decoration: none;
+	transition: color 0.18s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+	color: #e6e6e6;
+}
+
+@media (max-width: 768px) {
+	.nav-links {
+		gap: 16px;
+	}
+	
+	.nav-link {
+		font-size: 9px;
+	}
+}
+
+/* 5. Main Layout */
+main {
+	padding-top: 44px;
+	padding-bottom: 80px;
+}
+
+/* 6. Hero Section */
+.hero {
+	padding: 80px 20px 120px;
+	display: flex;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.hero-content {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.hero h1 {
+	margin-bottom: 16px;
+}
+
+.hero .subtitle {
+	font-size: 18px;
+	color: rgba(230, 230, 230, 0.6);
+	line-height: 1.8;
+	margin-bottom: 32px;
+}
+
+.hero-cta {
+	display: inline-flex;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+.btn {
+	padding: 12px 24px;
+	border: 1px solid rgba(230, 230, 230, 0.2);
+	border-radius: 4px;
+	background: transparent;
+	color: #e6e6e6;
+	font-family: 'Inter', sans-serif;
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: all 0.18s ease;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.btn:hover {
+	border-color: rgba(230, 230, 230, 0.4);
+	color: #0099ff;
+	border-color: rgba(0, 153, 255, 0.3);
+}
+
+.btn-primary {
+	background: #0099ff;
+	color: #000;
+	border-color: #0099ff;
+}
+
+.btn-primary:hover {
+	background: rgba(0, 153, 255, 0.9);
+	border-color: rgba(0, 153, 255, 0.9);
+}
+
+/* 7. Projects Section */
+.projects {
+	padding: 56px 20px 0;
+}
+
+.section-label {
+	font-family: 'Inter', sans-serif;
+	font-size: 10px;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: rgba(230, 230, 230, 0.18);
+	margin-bottom: 32px;
+	border-top: 1px solid rgba(230, 230, 230, 0.07);
+	padding-top: 32px;
+}
+
+.projects-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 24px;
+	margin-bottom: 80px;
+}
+
+.project-card {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 0;
+	border: 1px solid rgba(230, 230, 230, 0.07);
+	border-radius: 4px;
+	overflow: hidden;
+	transition: all 0.24s ease;
+	background: rgba(230, 230, 230, 0.01);
+}
+
+.project-card:hover {
+	border-color: rgba(0, 153, 255, 0.3);
+	background: rgba(0, 153, 255, 0.05);
+	transform: translateY(-2px);
+}
+
+.project-image {
+	width: 100%;
+	height: 200px;
+	background: linear-gradient(135deg, rgba(0, 153, 255, 0.1), rgba(230, 230, 230, 0.05));
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 48px;
+	color: rgba(230, 230, 230, 0.1);
+	overflow: hidden;
+}
+
+.project-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.project-info {
+	padding: 16px;
+}
+
+.project-title {
+	font-size: 14px;
+	font-weight: 500;
+	color: #e6e6e6;
+	margin-bottom: 4px;
+}
+
+.project-description {
+	font-size: 12px;
+	color: rgba(230, 230, 230, 0.4);
+	line-height: 1.6;
+}
+
+.project-meta {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+	margin-top: 8px;
+}
+
+.tag {
+	font-size: 10px;
+	padding: 4px 8px;
+	background: rgba(230, 230, 230, 0.08);
+	border: 1px solid rgba(230, 230, 230, 0.1);
+	border-radius: 100px;
+	color: rgba(230, 230, 230, 0.4);
+}
+
+/* 8. About Section */
+.about {
+	padding: 56px 20px 0;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.about-text {
+	font-size: 16px;
+	line-height: 1.8;
+	color: rgba(230, 230, 230, 0.6);
+	margin-bottom: 32px;
+}
+
+/* 9. Footer */
+footer {
+	padding: 56px 20px;
+	border-top: 1px solid rgba(230, 230, 230, 0.07);
+	margin-top: 80px;
+}
+
+.footer-content {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 40px;
+	margin-bottom: 40px;
+}
+
+.footer-section h3 {
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: rgba(230, 230, 230, 0.3);
+	margin-bottom: 12px;
+}
+
+.footer-links {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.footer-links a {
+	font-size: 12px;
+	color: rgba(230, 230, 230, 0.5);
+	text-decoration: none;
+	transition: color 0.18s ease;
+}
+
+.footer-links a:hover {
+	color: #0099ff;
+}
+
+.footer-bottom {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 32px;
+	border-top: 1px solid rgba(230, 230, 230, 0.05);
+	font-size: 11px;
+	color: rgba(230, 230, 230, 0.2);
+}
+
+.footer-bottom p {
+	margin: 0;
+	color: rgba(230, 230, 230, 0.2);
+	font-size: 11px;
+}
+
+@media (max-width: 768px) {
+	.hero {
+		padding: 60px 20px 80px;
+		min-height: auto;
+	}
+	
+	.hero h1 {
+		font-size: 40px;
+	}
+	
+	.projects-grid {
+		grid-template-columns: 1fr;
+	}
+	
+	.nav-links {
+		display: none;
+	}
+	
+	.footer-bottom {
+		flex-direction: column;
+		gap: 16px;
+		text-align: center;
+	}
+}
