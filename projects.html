@@ -1,13 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Carolina Cramer</title>
-	<meta name="description" content="Creative Lead &amp; Art Director — Carolina Cramer">
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="Carolina Cramer">
-	<meta property="og:description" content="Creative Lead &amp; Art Director">
+	<title>Projects — Carolina Cramer</title>
+	<meta name="description" content="A curated selection of work spanning branding, web, and digital experiences.">
 	<link rel="stylesheet" href="/src/styles/main.css">
 </head>
 <body>
@@ -18,51 +15,35 @@
 			<a href="/" class="nav-home">home</a>
 			<span class="nav-asterisk">*</span>
 			<ul class="nav-links">
-				<li><a href="/projects.html" class="nav-link">projects</a></li>
-				<li><a href="/about.html" class="nav-link">about</a></li>
-				<li><a href="#contact" class="nav-link">let's talk</a></li>
+				<li><a href="/projects.html" class="nav-link active">projects</a></li>
+				<li><a href="/#about" class="nav-link">about</a></li>
+				<li><a href="/#contact" class="nav-link">let's talk</a></li>
 			</ul>
 		</div>
 	</nav>
 
 	<main>
 
-		<!-- Hero -->
-		<section class="hero" id="hero">
-			<div class="hero-inner">
-				<h1 class="hero-title"><span class="ht-plain">C</span><span class="ht-dots">ARO</span><span class="ht-grid">L</span><span class="ht-dots">INA</span> <span class="ht-plain">CR</span><span class="ht-dots">A</span><span class="ht-plain">M</span><span class="ht-grid">E</span><span class="ht-plain">R</span></h1>
-				<p class="hero-subtitle">creative lead &amp; art director</p>
+		<!-- Projects Hero -->
+		<section class="projects-hero" id="projects">
+			<div class="projects-hero-inner">
+				<h1 class="projects-title">Projects</h1>
+				<p class="projects-subtitle">Get to know my work ;)</p>
 			</div>
 		</section>
 
-		<!-- Hero Gallery -->
-		<section class="gallery" id="hero-gallery">
-			<div class="gallery-nav">
-				<a href="#hero-gallery" class="gallery-cta">( see projects )</a>
-			</div>
-			<div class="gallery-grid">
-				<a href="projects/teal-wave.html" class="gallery-card">
-					<div class="gallery-card-bg gallery-card-bg--teal"></div>
-					<div class="gallery-card-pattern"></div>
-				</a>
-				<a href="projects/red-studio.html" class="gallery-card">
-					<div class="gallery-card-bg gallery-card-bg--red"></div>
-					<div class="gallery-card-pattern"></div>
-				</a>
-				<a href="projects/pink-bloom.html" class="gallery-card">
-					<div class="gallery-card-bg gallery-card-bg--pink"></div>
-					<div class="gallery-card-pattern"></div>
-				</a>
-			</div>
-		</section>
-
-		<!-- About -->
-		<section class="about-wrap" id="about">
-			<div class="about-left">
-				<p>Art director &amp; visual designer<br>based in Brazil, active since 2021.</p>
-			</div>
-			<div class="about-right">
-				<p>I collaborate with brands and businesses<br>that view <strong>design as a strategic tool</strong> for<br>impact, rather than just an aesthetic detail.</p>
+		<!-- Projects Grid -->
+		<section class="projects-grid-section">
+			<div class="projects-grid">
+				<div class="project-card"></div>
+				<div class="project-card"></div>
+				<div class="project-card"></div>
+				<div class="project-card"></div>
+				<div class="project-card"></div>
+				<div class="project-card"></div>
+				<div class="project-card"></div>
+				<div class="project-card"></div>
+				<div class="project-card"></div>
 			</div>
 		</section>
 
@@ -91,5 +72,14 @@
 	</footer>
 
 	<script type="module" src="/src/js/main.js"></script>
+	<script>
+		// Filter buttons
+		document.querySelectorAll('.filter-btn').forEach(btn => {
+			btn.addEventListener('click', () => {
+				document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'))
+				btn.classList.add('active')
+			})
+		})
+	</script>
 </body>
 </html>

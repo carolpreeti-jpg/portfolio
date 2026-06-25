@@ -73,21 +73,24 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.stat-number[data-target]').forEach(el => observer.observe(el))
 
-// Nav active link on scroll
-const sections = document.querySelectorAll('section[id], footer[id]')
+// Nav active link on scroll (only on pages without a hardcoded active link)
 const navLinks = document.querySelectorAll('.nav-link')
 
-const sectionObserver = new IntersectionObserver(entries => {
-	entries.forEach(entry => {
-		if (entry.isIntersecting) {
-			navLinks.forEach(link => {
-				link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`)
-			})
-		}
-	})
-}, { threshold: 0.4 })
+if (!document.querySelector('.nav-link.active')) {
+	const sections = document.querySelectorAll('section[id], footer[id]')
 
-sections.forEach(s => sectionObserver.observe(s))
+	const sectionObserver = new IntersectionObserver(entries => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				navLinks.forEach(link => {
+					link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`)
+				})
+			}
+		})
+	}, { threshold: 0.4 })
+
+	sections.forEach(s => sectionObserver.observe(s))
+}
 
 // Scroll to top button
 document.querySelector('.scroll-top')?.addEventListener('click', () => {
