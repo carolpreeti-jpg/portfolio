@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Projects — Carolina Cramer</title>
-	<meta name="description" content="A curated selection of work spanning branding, web, and digital experiences.">
+	<title>Let's Talk — Carolina Cramer</title>
+	<meta name="description" content="Get in touch with Carolina Cramer — creative lead and art director based in Brazil.">
 	<link rel="stylesheet" href="/src/styles/main.css">
 </head>
 <body>
@@ -15,38 +15,26 @@
 			<a href="/" class="nav-home">home</a>
 			<span class="nav-asterisk">*</span>
 			<ul class="nav-links">
-				<li><a href="/projects.html" class="nav-link active">projects</a></li>
+				<li><a href="/projects.html" class="nav-link">projects</a></li>
 				<li><a href="/about.html" class="nav-link">about</a></li>
-				<li><a href="/lets-talk.html" class="nav-link">let's talk</a></li>
+				<li><a href="/lets-talk.html" class="nav-link active">let's talk</a></li>
 			</ul>
 		</div>
 	</nav>
 
-	<main>
-
-		<!-- Projects Hero -->
-		<section class="projects-hero" id="projects">
-			<div class="projects-hero-inner">
-				<h1 class="projects-title">Projects</h1>
-				<p class="projects-subtitle" id="proj-subtitle"></p>
+	<main class="ltk-main">
+		<div class="ltk-center">
+			<h1 class="ltk-title">Let's Talk</h1>
+			<a href="mailto:carolinacramer.design@gmail.com" class="ltk-email" id="ltk-email-el"></a>
+			<div class="ltk-buttons">
+				<a href="https://wa.me/5551997264334" target="_blank" rel="noopener" class="ltk-btn">
+					WhatsApp
+				</a>
+				<a href="https://linkedin.com/in/carolinacramer" target="_blank" rel="noopener" class="ltk-btn">
+					LinkedIn
+				</a>
 			</div>
-		</section>
-
-		<!-- Projects Grid -->
-		<section class="projects-grid-section">
-			<div class="projects-grid">
-				<div class="project-card"></div>
-				<div class="project-card"></div>
-				<div class="project-card"></div>
-				<div class="project-card"></div>
-				<div class="project-card"></div>
-				<div class="project-card"></div>
-				<div class="project-card"></div>
-				<div class="project-card"></div>
-				<div class="project-card"></div>
-			</div>
-		</section>
-
+		</div>
 	</main>
 
 	<!-- Footer -->
@@ -74,8 +62,8 @@
 	<script type="module" src="/src/js/main.js"></script>
 	<script>
 		;(function(){
-			const el     = document.getElementById('proj-subtitle')
-			const target = 'Get to know my work ;)'
+			const el     = document.getElementById('ltk-email-el')
+			const target = 'carolinacramer.design@gmail.com'
 			const glyphs = '$!0+#-*X_=%?&/<>'.split('')
 			const perChar = 4, scrambleDur = 18, stepEvery = 1
 			let frame = 0, tickCount = 0
@@ -100,14 +88,6 @@
 			}
 			update()
 		})()
-
-		// Filter buttons
-		document.querySelectorAll('.filter-btn').forEach(btn => {
-			btn.addEventListener('click', () => {
-				document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'))
-				btn.classList.add('active')
-			})
-		})
 	</script>
 </body>
 </html>

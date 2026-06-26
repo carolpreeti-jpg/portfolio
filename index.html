@@ -43,21 +43,49 @@
 		}
 
 		/* conteúdo começa invisível */
-		nav, .hero, .gallery, .about-wrap, footer{
+		nav, .gallery, .about-wrap, footer{
 			opacity:0;
 			transform:translateY(18px);
 			transition:opacity .7s ease, transform .7s ease;
 		}
-		/* entra em cascata quando body recebe .ready */
 		body.ready nav        { opacity:1; transform:none; transition-delay:.05s; }
-		body.ready .hero      { opacity:1; transform:none; transition-delay:.2s;  }
-		body.ready .gallery   { opacity:1; transform:none; transition-delay:.35s; }
-		body.ready .about-wrap{ opacity:1; transform:none; transition-delay:.45s; }
-		body.ready footer     { opacity:1; transform:none; transition-delay:.55s; }
+		body.ready .gallery   { opacity:1; transform:none; transition-delay:.55s; }
+		body.ready .about-wrap{ opacity:1; transform:none; transition-delay:.65s; }
+		body.ready footer     { opacity:1; transform:none; transition-delay:.75s; }
+
+		/* hero title — cada span sobe em cascata */
+		.hero-title span{
+			display:inline-block;
+			opacity:0;
+			transform:translateY(32px);
+		}
+		body.ready .hero-title span:nth-child(1){ animation:heroIn .55s ease .1s  forwards; }
+		body.ready .hero-title span:nth-child(2){ animation:heroIn .55s ease .17s forwards; }
+		body.ready .hero-title span:nth-child(3){ animation:heroIn .55s ease .24s forwards; }
+		body.ready .hero-title span:nth-child(4){ animation:heroIn .55s ease .31s forwards; }
+		body.ready .hero-title span:nth-child(5){ animation:heroIn .55s ease .38s forwards; }
+		body.ready .hero-title span:nth-child(6){ animation:heroIn .55s ease .45s forwards; }
+		body.ready .hero-title span:nth-child(7){ animation:heroIn .55s ease .52s forwards; }
+		body.ready .hero-title span:nth-child(8){ animation:heroIn .55s ease .59s forwards; }
+		body.ready .hero-title span:nth-child(9){ animation:heroIn .55s ease .66s forwards; }
+
+		/* subtítulo entra logo depois do último span */
+		.hero-subtitle{
+			opacity:0;
+			transform:translateY(16px);
+		}
+		body.ready .hero-subtitle{
+			animation:heroIn .6s ease .82s forwards;
+		}
+
+		@keyframes heroIn{
+			to{ opacity:1; transform:translateY(0); }
+		}
 
 		@media (prefers-reduced-motion:reduce){
 			.asterisk g{ animation:none; }
-			nav,.hero,.gallery,.about-wrap,footer{ transition:none; }
+			nav,.gallery,.about-wrap,footer{ transition:none; }
+			.hero-title span,.hero-subtitle{ opacity:1; transform:none; animation:none; }
 		}
 	</style>
 </head>
@@ -82,7 +110,7 @@
 			<ul class="nav-links">
 				<li><a href="/projects.html" class="nav-link">projects</a></li>
 				<li><a href="/about.html" class="nav-link">about</a></li>
-				<li><a href="#contact" class="nav-link">let's talk</a></li>
+				<li><a href="/lets-talk.html" class="nav-link">let's talk</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -115,6 +143,26 @@
 					<div class="gallery-card-bg gallery-card-bg--pink"></div>
 					<div class="gallery-card-pattern"></div>
 				</a>
+			</div>
+		</section>
+
+		<!-- Expertise -->
+		<section class="expertise-strip">
+			<div class="expertise-item">
+				<span class="expertise-num">01</span>
+				<span class="expertise-name">Design</span>
+			</div>
+			<div class="expertise-item">
+				<span class="expertise-num">02</span>
+				<span class="expertise-name">Branding</span>
+			</div>
+			<div class="expertise-item">
+				<span class="expertise-num">03</span>
+				<span class="expertise-name">Audiovisual</span>
+			</div>
+			<div class="expertise-item">
+				<span class="expertise-num">04</span>
+				<span class="expertise-name">Web Design</span>
 			</div>
 		</section>
 
@@ -155,8 +203,11 @@
 	<script type="module" src="/src/js/main.js"></script>
 	<script>
 		(function(){
+			history.scrollRestoration = 'manual';
+			window.scrollTo(0, 0);
 			const preloader = document.getElementById('preloader');
 			window.addEventListener('load', () => {
+				window.scrollTo(0, 0);
 				setTimeout(() => {
 					preloader.classList.add('hidden');
 					document.body.classList.add('ready');

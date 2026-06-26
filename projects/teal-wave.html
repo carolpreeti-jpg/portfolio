@@ -3,9 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Projects — Carolina Cramer</title>
-	<meta name="description" content="A curated selection of work spanning branding, web, and digital experiences.">
-	<link rel="stylesheet" href="/src/styles/main.css">
+	<title>Teal Wave — Carolina Cramer</title>
+	<link rel="stylesheet" href="../src/styles/main.css">
 </head>
 <body>
 
@@ -22,31 +21,26 @@
 		</div>
 	</nav>
 
-	<main>
+	<main class="proj-detail-main">
+		<div class="proj-detail">
 
-		<!-- Projects Hero -->
-		<section class="projects-hero" id="projects">
-			<div class="projects-hero-inner">
-				<h1 class="projects-title">Projects</h1>
-				<p class="projects-subtitle" id="proj-subtitle"></p>
+			<!-- Left: sticky info panel -->
+			<aside class="proj-detail-aside">
+				<span class="proj-detail-tag">Branding</span>
+				<h1 class="proj-detail-title">Project Title</h1>
+				<p class="proj-detail-sub">Short tagline or subtitle for the project.</p>
+				<p class="proj-detail-desc">Description of the project — the challenge, the approach, and what was achieved. This text stays visible as the viewer scrolls through the visuals on the right.</p>
+			</aside>
+
+			<!-- Right: scrollable media -->
+			<div class="proj-detail-media">
+				<div class="proj-media-block"></div>
+				<div class="proj-media-block"></div>
+				<div class="proj-media-block"></div>
+				<div class="proj-media-block"></div>
 			</div>
-		</section>
 
-		<!-- Projects Grid -->
-		<section class="projects-grid-section">
-			<div class="projects-grid">
-				<div class="project-card"></div>
-				<div class="project-card"></div>
-				<div class="project-card"></div>
-				<div class="project-card"></div>
-				<div class="project-card"></div>
-				<div class="project-card"></div>
-				<div class="project-card"></div>
-				<div class="project-card"></div>
-				<div class="project-card"></div>
-			</div>
-		</section>
-
+		</div>
 	</main>
 
 	<!-- Footer -->
@@ -71,43 +65,6 @@
 		</div>
 	</footer>
 
-	<script type="module" src="/src/js/main.js"></script>
-	<script>
-		;(function(){
-			const el     = document.getElementById('proj-subtitle')
-			const target = 'Get to know my work ;)'
-			const glyphs = '$!0+#-*X_=%?&/<>'.split('')
-			const perChar = 4, scrambleDur = 18, stepEvery = 1
-			let frame = 0, tickCount = 0
-
-			const queue = target.split('').map((ch, i) => ({
-				to:  ch,
-				end: scrambleDur + i * perChar + Math.floor(Math.random() * 6)
-			}))
-
-			function update(){
-				tickCount++
-				const advance = (tickCount % stepEvery === 0)
-				let out = '', done = 0
-				for (const q of queue){
-					if (q.to === ' '){ out += ' '; done++; continue }
-					if (frame >= q.end){ out += q.to; done++ }
-					else { out += glyphs[Math.floor(Math.random() * glyphs.length)] }
-				}
-				el.textContent = out
-				if (advance) frame++
-				if (done < queue.length) requestAnimationFrame(update)
-			}
-			update()
-		})()
-
-		// Filter buttons
-		document.querySelectorAll('.filter-btn').forEach(btn => {
-			btn.addEventListener('click', () => {
-				document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'))
-				btn.classList.add('active')
-			})
-		})
-	</script>
+	<script type="module" src="../src/js/main.js"></script>
 </body>
 </html>
