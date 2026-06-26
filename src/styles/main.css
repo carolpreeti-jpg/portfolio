@@ -346,7 +346,7 @@ nav {
 	grid-template-columns: 34% 1fr;
 	column-gap: 8%;
 	align-items: start;
-	padding: calc(100px - 5vh) 24px;
+	padding: calc(160px - 5vh) 24px calc(100px - 5vh);
 	width: 100%;
 	box-sizing: border-box;
 }
@@ -788,6 +788,40 @@ footer {
 	transform: translateX(0);
 }
 
+.project-card--linked {
+	text-decoration: none;
+	position: relative;
+	display: block;
+	overflow: hidden;
+}
+
+.project-card--linked:hover { opacity: 0.88; }
+
+.project-card-info {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.project-card-tag {
+	font-family: 'LexendDeca', sans-serif;
+	font-size: 10px;
+	font-weight: 400;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: rgba(255,255,255,0.4);
+}
+
+.project-card-name {
+	font-family: 'LexendDeca', sans-serif;
+	font-size: 16px;
+	font-weight: 600;
+	color: #fff;
+}
+
 @media (max-width: 809px) {
 	.projects-hero { padding: 100px 16px 40px; }
 	.projects-grid { grid-template-columns: 1fr; }
@@ -1227,12 +1261,11 @@ footer {
 	position: sticky;
 	top: 62px;
 	align-self: start;
-	padding: 60px 48px 60px calc(24px + 2vw);
+	padding: 100px 48px 60px calc(24px + 2vw);
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
-	max-height: calc(100vh - 62px);
-	overflow-y: auto;
+	max-height: none;
 }
 
 .proj-detail-tag {
@@ -1271,28 +1304,50 @@ footer {
 	margin: 0;
 }
 
+.proj-credits {
+	margin-top: 24px;
+}
+
+.proj-credits-label {
+	font-family: 'LexendDeca', sans-serif;
+	font-size: 10px;
+	font-weight: 400;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: rgba(255,255,255,0.25);
+	margin-bottom: 6px;
+}
+
+.proj-credits-value {
+	font-family: 'LexendDeca', sans-serif;
+	font-size: 13px;
+	font-weight: 400;
+	color: rgba(255,255,255,0.7);
+}
+
 .proj-detail-media {
 	display: flex;
 	flex-direction: column;
 	gap: 4px;
-	padding: 4px 4px 4px 0;
-	border-left: 1px solid rgba(255,255,255,0.06);
+	padding: 100px 4px 4px 0;
 }
 
 .proj-media-block {
 	width: 100%;
-	aspect-ratio: 16 / 9;
 	background: rgba(255,255,255,0.05);
 	background-image: radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px);
 	background-size: 8px 8px;
 	flex-shrink: 0;
 }
 
+.proj-media-block:not(:has(img, video)) {
+	aspect-ratio: 16 / 9;
+}
+
 .proj-media-block img,
 .proj-media-block video {
 	width: 100%;
-	height: 100%;
-	object-fit: cover;
+	height: auto;
 	display: block;
 }
 
