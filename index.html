@@ -9,8 +9,70 @@
 	<meta property="og:title" content="Carolina Cramer">
 	<meta property="og:description" content="Creative Lead &amp; Art Director">
 	<link rel="stylesheet" href="/src/styles/main.css">
+	<style>
+		#preloader{
+			position:fixed;
+			inset:0;
+			z-index:9999;
+			background:#000000;
+			display:flex;
+			align-items:center;
+			justify-content:center;
+			transition:opacity 1s ease, visibility 1s ease;
+		}
+		#preloader.hidden{
+			opacity:0;
+			visibility:hidden;
+			pointer-events:none;
+		}
+		.asterisk{
+			transition:transform 1s ease, opacity 1s ease;
+		}
+		#preloader.hidden .asterisk{
+			transform:scale(1.6);
+			opacity:0;
+		}
+		.asterisk g{
+			transform-box:fill-box;
+			transform-origin:center;
+			animation:astspin 1.6s linear infinite;
+		}
+		@keyframes astspin{
+			from{ transform:rotate(0deg); }
+			to  { transform:rotate(360deg); }
+		}
+
+		/* conteúdo começa invisível */
+		nav, .hero, .gallery, .about-wrap, footer{
+			opacity:0;
+			transform:translateY(18px);
+			transition:opacity .7s ease, transform .7s ease;
+		}
+		/* entra em cascata quando body recebe .ready */
+		body.ready nav        { opacity:1; transform:none; transition-delay:.05s; }
+		body.ready .hero      { opacity:1; transform:none; transition-delay:.2s;  }
+		body.ready .gallery   { opacity:1; transform:none; transition-delay:.35s; }
+		body.ready .about-wrap{ opacity:1; transform:none; transition-delay:.45s; }
+		body.ready footer     { opacity:1; transform:none; transition-delay:.55s; }
+
+		@media (prefers-reduced-motion:reduce){
+			.asterisk g{ animation:none; }
+			nav,.hero,.gallery,.about-wrap,footer{ transition:none; }
+		}
+	</style>
 </head>
 <body>
+
+	<!-- Preloader -->
+	<div id="preloader">
+		<svg class="asterisk" width="70" height="70" viewBox="0 0 100 100" role="img" aria-label="Carregando">
+			<g>
+				<line x1="50" y1="8" x2="50" y2="92" stroke="#dcdcdc" stroke-width="9" stroke-linecap="round"/>
+				<line x1="86.4" y1="29" x2="13.6" y2="71" stroke="#dcdcdc" stroke-width="9" stroke-linecap="round"/>
+				<line x1="13.6" y1="29" x2="86.4" y2="71" stroke="#dcdcdc" stroke-width="9" stroke-linecap="round"/>
+			</g>
+		</svg>
+	</div>
 
 	<!-- Navigation -->
 	<nav>
@@ -91,5 +153,16 @@
 	</footer>
 
 	<script type="module" src="/src/js/main.js"></script>
+	<script>
+		(function(){
+			const preloader = document.getElementById('preloader');
+			window.addEventListener('load', () => {
+				setTimeout(() => {
+					preloader.classList.add('hidden');
+					document.body.classList.add('ready');
+				}, 800);
+			});
+		})();
+	</script>
 </body>
 </html>
